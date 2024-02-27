@@ -1,0 +1,3 @@
+<% @bus.seats.each do |seat| %>
+    <span class="seat <%= seat_status(seat, @reservations) %>"><%= seat %></span>
+  <% end %>

@@ -1,0 +1,33 @@
+<!-- app/views/owner_sessions/new.html.erb -->
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="text-center mb-4">Owner Login</h2>
+
+          <%= form_tag create_owner_session_path, method: :post, class: 'needs-validation', novalidate: true do %>
+            <div class="mb-3">
+              <%= label_tag :username, 'Username', class: 'form-label' %>
+              <%= text_field_tag :username, nil, class: 'form-control', required: true %>
+              <div class="invalid-feedback">
+                Please enter your username.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <%= label_tag :password, 'Password', class: 'form-label' %>
+              <%= password_field_tag :password, nil, class: 'form-control', required: true %>
+              <div class="invalid-feedback">
+                Please enter your password.
+              </div>
+            </div>
+
+            <%= submit_tag 'Login', class: 'btn btn-primary btn-block' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

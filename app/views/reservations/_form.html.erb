@@ -1,0 +1,85 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Reserve Seats</h1>
+
+  <%= form_with(model: [@bus, @reservation], local: true) do |form| %>
+    <% if @reservation.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+        <ul>
+          <% @reservation.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :date, class: 'form-label' %>
+      <%= form.date_field :date, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :seats, class: 'form-label' %>
+      <%= form.number_field :seats, class: 'form-control' %>
+    </div>
+
+    <!-- Seat Layout Section -->
+    <div class="mb-3 text-center">
+      <label for="seatLayout" class="form-label">Choose Seat</label>
+      <div class="bus seat2-2 border-0 p-0">
+        <ol class="seats list-inline">
+          <% (1..40).each do |seat_number| %>
+            <li class="seat list-inline-item">
+              <%= form.check_box :seat_numbers, { multiple: true, class: 'form-check-input', id: "seat-checkbox-#{seat_number}" }, seat_number, nil %>
+              <label for="seat-checkbox-<%= seat_number %>" class="seat-label <%= seat_status(seat_number) %>">
+                <%= seat_number %>
+              </label>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+
+    <div class="text-center mt-2">
+      <button class="btn btn-primary btn-xs mb-2" type="button" id="availableBtn">Available</button>
+      <button class="btn btn-success btn-xs mb-2" type="button" id="chosenBtn">Chosen</button>
+      <button class="btn btn-danger btn-xs mb-2" type="button" id="bookedBtn">Booked</button>
+    </div>
+
+    <div class="mb-3 text-center">
+      <%= form.submit 'Reserve Seats', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var reservedSeats = <%= @bus.reservations.pluck(:seat_numbers).flatten.to_json.html_safe %>;
+
+      reservedSeats.forEach(function(seatNumber) {
+        var label = document.querySelector("#seat-checkbox-" + seatNumber).nextElementSibling;
+        label.classList.add("btn-danger");
+      });
+
+      // Handle button clicks to change class dynamically
+      document.getElementById("availableBtn").addEventListener("click", function() {
+        updateButtonsClass("btn-primary");
+      });
+
+      document.getElementById("chosenBtn").addEventListener("click", function() {
+        updateButtonsClass("btn-success");
+      });
+
+      document.getElementById("bookedBtn").addEventListener("click", function() {
+        updateButtonsClass("btn-danger");
+      });
+
+      function updateButtonsClass(className) {
+        var seatLabels = document.querySelectorAll(".seat-label");
+        seatLabels.forEach(function(label) {
+          label.classList.remove("btn-primary", "btn-success", "btn-danger");
+          label.classList.add(className);
+        });
+      }
+    });
+  </script>
+</div>

@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h1 class="text-center">Reservation Details</h1>
+        </div>
+        <div class="card-body">
+          <p><strong>Date:</strong> <%= @reservation.date %></p>
+          <p><strong>Seats:</strong> <%= @reservation.seats %></p>
+          <p><strong>Seat No:</strong> <%= @reservation&.seat_numbers&.join(', ') || 'N/A' %></p>
+          <p><strong>Bus Timing:</strong> <%= @reservation.bus.timing %></p>
+          <%= link_to 'Back', buses_path, class: 'btn btn-secondary mt-3' %>
+          <%= link_to 'Update', edit_bus_reservation_path(@bus, @reservation), class: 'btn btn-secondary mt-3' %>
+        
+          <%= button_to 'Cancel Reservation', bus_reservation_path(@bus, @reservation),
+                method: :delete,
+                data: { confirm: 'Are you sure you want to cancel this reservation?' },
+                class: 'btn btn-danger mt-3' %>
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

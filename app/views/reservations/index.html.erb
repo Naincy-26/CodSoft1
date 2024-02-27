@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h1>Ticket Details</h1>
+
+  <% @reservations.each do |reservation| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h2 class="card-title">Bus: <%= link_to reservation.bus.name, reservation.bus %></h2>
+        <p class="card-text">Date: <%= reservation.date %></p>
+        <p class="card-text">Seats: <%= reservation.seats %></p>
+        <%= link_to 'Cancel Reservation', buses_path(@bus, reservation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+    </div>
+  <% end %>
+</div>

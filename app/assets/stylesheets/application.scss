@@ -1,0 +1,102 @@
+@import 'bootstrap';
+
+// <----------section2---------->
+.section2 {
+        height: 150vh;
+}
+
+// <--------------SearchBar--------->
+/* Styles for social icons */
+.social-icons-container {
+        display: flex;
+        justify-content: center;
+      }
+      
+      .social-icon {
+        border-radius: 5px;
+        width: 40px;
+        height: 40px;
+        opacity: 0.5; 
+        transition: opacity 0.3s ease-in-out;
+      }
+      
+      .social-icon:hover {
+        opacity: 1; 
+      }
+      
+      /* Styles for the search bar overlay */
+      .search-bar-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100%;
+        z-index: 1;
+      }
+      
+      /* Additional style to hide social icons when search bar is active */
+      .search-bar-overlay.active .social-icon {
+        display: none;
+      }
+
+      /* User Icon styles */
+  .navbar .dropdown-menu {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar .dropdown-menu a {
+    color: #000 !important;
+  }
+/* app/assets/stylesheets/application.css or application.scss */
+.seat {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.seat.available {
+  background-color: green;
+  color: white;
+}
+
+.seat.booked {
+  background-color: red;
+  color: white;
+}
+
+.seat.chosen {
+  background-color: yellow;
+  color: black;
+}
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+  }
+
+
+      
+
+      

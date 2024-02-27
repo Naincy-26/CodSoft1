@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <h1><%= @bus.name %></h1>
+  <p>Registration No: <%= @bus.registration_no %></p>
+  <p>Route: <%= @bus.route %></p>
+  <p>Total Seats: <%= @bus.seats %></p>
+<p>Available Seats: <%= @bus.available_seats %></p>
+  <!-- Use the correct attribute for bus timing -->
+  <p>Timing: <%= @bus.timing %></p>
+
+  <!-- Booking Button -->
+  <%= link_to "Book Now", new_bus_reservation_path(@bus), class: "btn btn-primary" %>
+
+  <!-- Back Button -->
+  <%= link_to "Back to Buses", buses_path, class: "btn btn-secondary" %>
+</div>

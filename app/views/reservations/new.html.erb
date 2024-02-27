@@ -1,0 +1,11 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center mb-4">New Reservation</h1>
+
+      <%= render 'form', reservation: @reservation %>
+
+      <%= link_to 'Back', buses_path, class: 'btn btn-secondary mt-3' %>
+    </div>
+  </div>
+</div>
